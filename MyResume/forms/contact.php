@@ -17,21 +17,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare email
-    $mailTo = "leezabethyomi@gmail.com";
-    $headers = "From: " . $email . "\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
+    $mailTo = "anuoluwapo@elizabethosunsanwo.co.uk";
+
+    $headers = "Reply-To: " . $name . " <" . $email . ">\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
     
-    $emailBody = "You have received a new message from your portfolio contact form.\n\n";
+    $emailBody = "You have received a message from " . $name . ".\n\n";
     $emailBody .= "Name: " . $name . "\n";
     $emailBody .= "Email: " . $email . "\n";
     $emailBody .= "Subject: " . $subject . "\n\n";
     $emailBody .= "Message:\n" . $message . "\n";
 
     // Send email
-    if (mail($mailTo, $subject, $emailBody, $headers)) {
-        header("Location: ../index.html?mailsent");
-        exit();
+ 
+    $envelopeSender = $mailTo;
+    if (mail($mailTo, $subject, $emailBody, $headers, "-f " . $envelopeSender)) {
+        echo "OK"; 
     } else {
         echo "Failed to send email. Please try again.";
     }
