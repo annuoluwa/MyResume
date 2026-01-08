@@ -1,0 +1,4 @@
+.env
+.env.*
+.smtp_config.php
+forms/contact-backup.php
