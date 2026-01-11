@@ -144,6 +144,51 @@ h6 {
   min-width: 200px;
 }
 
+/* Accessibility & usability for glightbox description */
+.glightbox-container .gslide-description {
+  max-height: 40vh;
+  overflow-y: auto;
+  background: #fff;
+  color: #222;
+  font-size: 1.05em;
+  line-height: 1.6;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding-right: 1rem;
+}
+
+body.dark-mode .glightbox-container .gslide-description {
+  background: #181a1b;
+  color: #f2f2f2;
+}
+
+.glightbox-container .gslide-description:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.glightbox-container .gslide-title {
+  color: #0a2540;
+  font-weight: 700;
+  font-size: 1.15em;
+}
+body.dark-mode .glightbox-container .gslide-title {
+  color: #fff;
+}
+
+/* Ensure scrollbars are visible and accessible */
+.glightbox-container .gslide-description::-webkit-scrollbar {
+  width: 10px;
+}
+.glightbox-container .gslide-description::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 6px;
+}
+body.dark-mode .glightbox-container .gslide-description::-webkit-scrollbar-thumb {
+  background: #444;
+}
+
+
 @media (min-width: 1200px) {
   .header {
     background: transparent;
@@ -295,6 +340,12 @@ h6 {
   position: relative;
 }
 
+@media (min-width: 1200px) {
+  .footer {
+    margin-left: 200px;
+  }
+}
+
 .footer h3 {
   font-size: 36px;
   font-weight: 700;
@@ -304,10 +355,15 @@ h6 {
 }
 
 .footer p {
-  font-size: 15;
+  font-size: 20px;
   font-style: italic;
-  padding: 0;
+  padding: 0 10px;
   margin: 0 0 30px 0;
+  word-break: break-word;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.3;
 }
 
 .footer .social-links {
@@ -582,6 +638,16 @@ section,
   line-height: 1;
   margin-right: 20px;
   transition: 0.3s;
+  vertical-align: middle;
+}
+
+.hero .social-links a i {
+  font-size: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero .social-links a:hover {
